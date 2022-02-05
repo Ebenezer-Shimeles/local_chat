@@ -6,9 +6,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'pages/home_page.dart';
 import 'bloc/main_menu_bloc.dart';
 
-List _providers = [];
+List<Provider<Object>> _providers = [];
 void initProviders() {
-  _providers.add(BlocProvider(create: (__) => MainMenuBlocNavBarBloc()));
+  _providers.add(Provider<MainMenuBlocNavBarBloc>(create: (__) => MainMenuBlocNavBarBloc()));
 }
 
 void main() async {
