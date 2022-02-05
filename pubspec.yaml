@@ -34,6 +34,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_nearby_connections: ^1.1.1
   device_info: ^2.0.3
+  equatable: ^2.0.3
   #fluttertoast: ^8.0.8
 
 dev_dependencies: 

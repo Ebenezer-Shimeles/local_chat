@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_nearby_connections/flutter_nearby_connections.dart';
+import 'package:local_chat/bloc/connection_service_bloc.dart';
+import 'package:local_chat/bloc/message_bloc.dart';
 
 import 'package:provider/provider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,10 +19,14 @@ Future<void> initProviders() async {
     create: (ctx) => RouterBloc(),
   ));
 
-  final connectionServiceSingelton =
-      ConnectionService(deviceType: DeviceType.browser);
-  await connectionServiceSingelton.init([]);
-  _providers.add(Provider.value(value: connectionServiceSingelton));
+  final connectionServiceBloc = ConnectionServiceBloc(DeviceType.browser);
+
+  _providers
+      .add(Provider<ConnectionServiceBloc>.value(value: connectionServiceBloc));
+  await connectionServiceBloc.init();
+  _providers.add(Provider<MsgBloc>(
+    create: (ctx) => MsgBloc(),
+  ));
 }
 
 void main() async {
